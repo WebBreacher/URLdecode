@@ -411,11 +411,26 @@ function tryBase64Decode(value) {
 
 function tryUnixTimestamp(value) {
   if (!/^\d+$/.test(value)) return null;
-  const num = parseInt(value, 10);
-  if (value.length === 10 && num > 978307200 && num < 9999999999)
-    return { date: new Date(num * 1000), unit: 'seconds' };
-  if (value.length === 13 && num > 978307200000 && num < 9999999999999)
-    return { date: new Date(num), unit: 'milliseconds' };
+  const len = value.length;
+  if (len === 10) {
+    const num = parseInt(value, 10);
+    if (num > 978307200 && num < 9999999999)
+      return { date: new Date(num * 1000), unit: 'seconds' };
+  }
+  if (len === 13) {
+    const num = parseInt(value, 10);
+    if (num > 978307200000 && num < 9999999999999)
+      return { date: new Date(num), unit: 'milliseconds' };
+  }
+  if (len === 16) {
+    // Microseconds — divide by 1000 to get ms; use BigInt to avoid precision loss
+    try {
+      const ms = Number(BigInt(value) / BigInt(1000));
+      const date = new Date(ms);
+      if (date.getFullYear() >= 2001 && date.getFullYear() <= 2100)
+        return { date, unit: 'microseconds' };
+    } catch (e) {}
+  }
   return null;
 }
 
@@ -530,11 +545,27 @@ function parseURL(rawUrl) {
       });
     } else if (parts.length === 1) {
       const dec = isUrlEncoded(parts[0]) ? decode(parts[0]) : null;
-      segments.push({ id: 'path', category: 'Path', label: 'Page Path', rawValue: url.pathname, colorHex: HOST_COLORS.path, explanation: `The path to the page or resource on this site: <strong>${esc(dec || url.pathname)}</strong>${dec ? ' <em>(URL-decoded)</em>' : ''}`, badge: null });
+      const ts  = tryUnixTimestamp(parts[0]);
+      const label = ts ? 'Path — Timestamp' : 'Page Path';
+      const explanation = ts
+        ? `This path segment is a <strong>Unix timestamp</strong> (${ts.unit}), representing: <strong>${fmtDate(ts.date)}</strong>. Timestamps embedded in URL paths are commonly used as unique record IDs while also encoding the time the record was created.`
+        : `The path to the page or resource on this site: <strong>${esc(dec || url.pathname)}</strong>${dec ? ' <em>(URL-decoded)</em>' : ''}`;
+      segments.push({ id: 'path', category: 'Path', label, rawValue: url.pathname, colorHex: HOST_COLORS.path, explanation, badge: null });
     } else {
       parts.forEach((p, i) => {
         const dec = isUrlEncoded(p) ? decode(p) : null;
-        segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1} of the page path: <strong>/${esc(dec || p)}</strong>${dec ? ` — URL-decoded from <code>${esc(p)}</code>` : ''}`, badge: null });
+        const ts  = tryUnixTimestamp(p);
+        let label = `Path Segment ${i + 1}`;
+        let explanation;
+        if (ts) {
+          label = `Path Segment ${i + 1} — Timestamp`;
+          explanation = `This segment is a <strong>Unix timestamp</strong> (${ts.unit}), representing: <strong>${fmtDate(ts.date)}</strong>. Timestamps embedded in URL paths are commonly used as unique record IDs while also encoding the time the record was created.`;
+        } else if (dec) {
+          explanation = `Segment ${i + 1} of the page path: <strong>/${esc(dec)}</strong> — URL-decoded from <code>${esc(p)}</code>`;
+        } else {
+          explanation = `Segment ${i + 1} of the page path: <strong>/${esc(p)}</strong>`;
+        }
+        segments.push({ id: `path-${i}`, category: 'Path', label, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation, badge: null });
       });
     }
   }
