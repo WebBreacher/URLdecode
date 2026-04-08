@@ -334,6 +334,167 @@
       .breakdown-table thead th:nth-child(1) { width: 36%; }
       .breakdown-table thead th:nth-child(3) { width: 64%; }
     }
+
+    /* ---- ADVANCED MODE ---- */
+    .advanced-trigger-area {
+      text-align: center;
+      padding: 2.5rem 1rem 1rem;
+      border-top: 2px dashed #dee2e6;
+      margin-top: 2rem;
+    }
+
+    .btn-advanced {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      border: 2px solid #6610f2;
+      border-radius: 14px;
+      padding: 16px 36px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 24px rgba(102, 16, 242, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-advanced:hover:not(:disabled) {
+      background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+      box-shadow: 0 8px 32px rgba(102, 16, 242, 0.55);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .btn-advanced:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .btn-advanced .flask-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .advanced-panel {
+      background: #0d1117;
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-top: 2rem;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+    }
+
+    .advanced-panel-header {
+      font-family: 'Roboto Slab', serif;
+      color: #7ee787;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .advanced-empty {
+      color: #8b949e;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem 0;
+      font-style: italic;
+    }
+
+    .advanced-param-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .advanced-param-key {
+      font-family: 'Roboto Mono', monospace;
+      color: #79c0ff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .advanced-param-raw {
+      font-family: 'Roboto Mono', monospace;
+      color: #8b949e;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+
+    .advanced-insight {
+      background: #0d1117;
+      border-left: 3px solid #7ee787;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-top: 8px;
+    }
+
+    .advanced-insight.type-jwt   { border-left-color: #d2a8ff; }
+    .advanced-insight.type-warn  { border-left-color: #ffa657; }
+    .advanced-insight.type-ts    { border-left-color: #79c0ff; }
+    .advanced-insight.type-uuid  { border-left-color: #0dcaf0; }
+
+    .advanced-insight-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #7ee787;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .advanced-insight.type-jwt   .advanced-insight-label { color: #d2a8ff; }
+    .advanced-insight.type-warn  .advanced-insight-label { color: #ffa657; }
+    .advanced-insight.type-ts    .advanced-insight-label { color: #79c0ff; }
+    .advanced-insight.type-uuid  .advanced-insight-label { color: #0dcaf0; }
+
+    .advanced-insight-value {
+      font-family: 'Roboto Mono', monospace;
+      color: #e6edf3;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 0;
+    }
+
+    .pyodide-status {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.84rem;
+      color: #8b949e;
+      text-align: center;
+      padding: 0.5rem 0 1rem;
+    }
+
+    .pyodide-progress {
+      height: 4px;
+      background: #30363d;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .pyodide-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #6610f2, #7ee787);
+      border-radius: 2px;
+      width: 40%;
+      animation: progress-sweep 1.8s ease-in-out infinite;
+    }
+
+    @keyframes progress-sweep {
+      0%   { transform: translateX(-150%); }
+      100% { transform: translateX(350%); }
+    }
   </style>
 </head>
 
@@ -412,6 +573,23 @@
         (Apache 2.0). &nbsp;|&nbsp;
         <a href="https://github.com/YOUR_USERNAME/urldecode" target="_blank" rel="noopener">URLdecode on GitHub</a>
       </p>
+
+      <!-- Advanced Analysis Trigger -->
+      <div class="advanced-trigger-area">
+        <div style="font-size:0.82rem;color:#888;margin-bottom:14px;">
+          Want deeper analysis of encoded values, JWTs, and more?
+        </div>
+        <button id="advancedBtn" class="btn-advanced" onclick="launchAdvancedMode()">
+          <span class="flask-icon">⚗️</span> Enable Advanced Analysis
+        </button>
+        <div style="font-size:0.75rem;color:#aaa;margin-top:12px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.5;">
+          Runs a Python-powered analyzer directly in your browser using Pyodide (WebAssembly).<br>
+          Requires a one-time ~10 MB download.
+        </div>
+      </div>
+
+      <!-- Advanced Results Panel (injected by JS) -->
+      <div id="advancedPanel"></div>
     </div>
 
     <!-- Examples -->
@@ -426,6 +604,54 @@
 
   </div>
 
+  <!-- Advanced Mode Warning Modal -->
+  <div class="modal fade" id="advancedModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:14px;border:2px solid #6610f2;background:#0d1117;color:#c9d1d9;">
+        <div class="modal-header" style="border-bottom:1px solid #30363d;padding:1.25rem 1.5rem;">
+          <h5 class="modal-title" id="advancedModalLabel" style="font-family:'Roboto Slab',serif;color:#7ee787;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:1.4rem;">⚗️</span> Advanced Analysis Mode
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding:1.5rem;">
+
+          <div style="background:#161b22;border:1px solid #ffa657;border-left:4px solid #ffa657;border-radius:8px;padding:12px 16px;margin-bottom:1.25rem;font-size:0.88rem;">
+            <strong style="color:#ffa657;">⚠️ Resource Warning</strong><br>
+            <span style="color:#c9d1d9;">This feature downloads the <strong style="color:#e6edf3;">Pyodide</strong> WebAssembly Python runtime &mdash; approximately <strong style="color:#e6edf3;">10&ndash;15 MB</strong> of data. It runs entirely in your browser; nothing is sent to any server.</span>
+          </div>
+
+          <p style="font-size:0.9rem;margin-bottom:1rem;color:#c9d1d9;">
+            <strong style="color:#e6edf3;">What it does:</strong> Runs a Python script in your browser using WebAssembly to perform deeper analysis on each URL parameter, detecting things the standard parser misses:
+          </p>
+
+          <ul style="font-size:0.88rem;color:#c9d1d9;padding-left:1.4rem;line-height:2;">
+            <li>Nested JSON hidden inside base64-encoded values</li>
+            <li><strong style="color:#d2a8ff;">JWT tokens</strong> &mdash; decodes the header &amp; payload automatically</li>
+            <li>Hex-encoded strings decoded to readable text</li>
+            <li>Multiple layers of URL-encoding unwrapped step by step</li>
+            <li>UUID format &amp; version identification</li>
+            <li>Precise Unix timestamp decoding (seconds &amp; milliseconds)</li>
+          </ul>
+
+          <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;font-size:0.84rem;color:#8b949e;">
+            <strong style="color:#c9d1d9;">⏱ How long will it take?</strong><br>
+            The first load downloads ~10&ndash;15 MB and usually takes <strong style="color:#e6edf3;">15&ndash;45 seconds</strong> depending on your connection. Once loaded it stays cached in your browser, so subsequent uses on the same page are instant.
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid #30363d;padding:1rem 1.5rem;gap:10px;">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="color:#8b949e;border-color:#30363d;">
+            Cancel
+          </button>
+          <button type="button" class="btn" onclick="confirmAdvancedMode()"
+                  style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border:2px solid #6610f2;font-weight:700;border-radius:8px;padding:8px 24px;">
+            ⚗️ Load &amp; Analyze
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer mt-auto">
     URLdecode &mdash; Apache License 2.0 &mdash;
@@ -436,6 +662,326 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="urlparse.js"></script>
+  <script>
+  // ============================================================
+  // ADVANCED MODE — PYODIDE
+  // ============================================================
+
+  let _pyodide = null;
+  let _pyodideLoading = false;
+
+  function launchAdvancedMode() {
+    const modal = new bootstrap.Modal(document.getElementById('advancedModal'));
+    modal.show();
+  }
+
+  async function confirmAdvancedMode() {
+    const modalEl = document.getElementById('advancedModal');
+    const modal   = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    modal.hide();
+
+    const btn   = document.getElementById('advancedBtn');
+    const panel = document.getElementById('advancedPanel');
+    btn.disabled = true;
+
+    panel.innerHTML = `
+      <div class="advanced-panel">
+        <div class="advanced-panel-header">⚗️ Advanced Analysis &mdash; Loading Python Runtime</div>
+        <div class="pyodide-status" id="pyodideStatus">Downloading Pyodide WebAssembly runtime (~10&ndash;15 MB)&hellip;</div>
+        <div class="pyodide-progress"><div class="pyodide-progress-bar"></div></div>
+        <div class="advanced-empty">This may take 15&ndash;45 seconds on first load. Hang tight.</div>
+      </div>`;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+      await _loadPyodide();
+      _runAdvancedAnalysis();
+    } catch (err) {
+      panel.innerHTML = `
+        <div class="advanced-panel">
+          <div class="advanced-panel-header">⚗️ Advanced Analysis</div>
+          <div style="color:#ffa657;font-size:0.88rem;">
+            <strong>Failed to load Pyodide:</strong> ${esc(String(err))}<br>
+            Check your network connection and try refreshing the page.
+          </div>
+        </div>`;
+      btn.disabled = false;
+    }
+  }
+
+  async function _loadPyodide() {
+    if (_pyodide) return;
+    if (_pyodideLoading) {
+      // Wait until done
+      await new Promise(resolve => {
+        const t = setInterval(() => { if (_pyodide) { clearInterval(t); resolve(); } }, 300);
+      });
+      return;
+    }
+    _pyodideLoading = true;
+
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js';
+      s.onload = resolve;
+      s.onerror = () => reject(new Error('Could not load Pyodide script from CDN.'));
+      document.head.appendChild(s);
+    });
+
+    const statusEl = document.getElementById('pyodideStatus');
+    if (statusEl) statusEl.textContent = 'Initializing Python environment\u2026';
+
+    /* global loadPyodide */
+    _pyodide = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/' });
+    _pyodideLoading = false;
+  }
+
+  // Reset advanced panel when a new URL is decoded or the input is cleared
+  (function patchURLdecode() {
+    const _orig_analyzeURL = window.analyzeURL;
+    window.analyzeURL = function () {
+      document.getElementById('advancedPanel').innerHTML = '';
+      const btn = document.getElementById('advancedBtn');
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="flask-icon">\u2697\uFE0F</span> Enable Advanced Analysis';
+        btn.onclick = launchAdvancedMode;
+      }
+      _orig_analyzeURL.apply(this, arguments);
+    };
+
+    const _orig_onInputChange = window.onInputChange;
+    window.onInputChange = function () {
+      document.getElementById('advancedPanel').innerHTML = '';
+      _orig_onInputChange.apply(this, arguments);
+    };
+  })();
+
+  const PYTHON_ANALYZER = `
+import urllib.parse, base64, json, re, datetime
+
+def _b64_decode(val):
+    try:
+        norm = val.replace('-', '+').replace('_', '/')
+        padded = norm + '===='[:(4 - len(norm) % 4) % 4]
+        return base64.b64decode(padded)
+    except Exception:
+        return None
+
+def _printable_ratio(raw_bytes):
+    if not raw_bytes:
+        return 0
+    printable = sum(1 for b in raw_bytes if 32 <= b < 127)
+    return printable / len(raw_bytes)
+
+def analyze(url_str):
+    results = []
+    try:
+        parsed = urllib.parse.urlparse(url_str)
+        params = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+    except Exception as e:
+        return [{'error': str(e)}]
+
+    for key, value in params:
+        insights = []
+
+        # ---- Nested URL decode (multiple layers) ----
+        decoded = value
+        layers = 0
+        while True:
+            nd = urllib.parse.unquote_plus(decoded)
+            if nd == decoded:
+                break
+            decoded = nd
+            layers += 1
+            if layers > 4:
+                break
+        if layers > 0:
+            insights.append({'type': 'url_decoded', 'label': f'URL Decoded ({layers} layer{"s" if layers > 1 else ""})', 'value': decoded})
+
+        working = decoded if layers > 0 else value
+
+        # ---- JWT detection ----
+        jwt_parts = working.split('.')
+        if len(jwt_parts) == 3 and all(re.match(r'^[A-Za-z0-9_\-]+$', p) for p in jwt_parts[:2]):
+            try:
+                hdr_raw = _b64_decode(jwt_parts[0])
+                pay_raw = _b64_decode(jwt_parts[1])
+                if hdr_raw and pay_raw:
+                    hdr  = json.loads(hdr_raw.decode('utf-8'))
+                    pay  = json.loads(pay_raw.decode('utf-8'))
+                    # Decode any exp/iat/nbf timestamps in payload
+                    for ts_key in ('exp', 'iat', 'nbf'):
+                        if ts_key in pay and isinstance(pay[ts_key], int):
+                            try:
+                                pay[f'{ts_key}_human'] = datetime.datetime.utcfromtimestamp(pay[ts_key]).strftime('%Y-%m-%d %H:%M:%S UTC')
+                            except Exception:
+                                pass
+                    insights.append({'type': 'jwt', 'label': 'JWT Token Detected',
+                                     'header': json.dumps(hdr, indent=2),
+                                     'payload': json.dumps(pay, indent=2)})
+                    # Skip further decoding — it's a JWT
+                    results.append({'key': key, 'value': value, 'insights': insights})
+                    continue
+            except Exception:
+                pass
+
+        # ---- Base64 ----
+        if re.match(r'^[A-Za-z0-9+/\-_]+=*$', working) and len(working) >= 8:
+            raw = _b64_decode(working)
+            if raw and _printable_ratio(raw) > 0.70:
+                text = raw.decode('utf-8', errors='replace')
+                if text != working:
+                    # Maybe it's JSON?
+                    try:
+                        obj = json.loads(text)
+                        insights.append({'type': 'b64json', 'label': 'Base64 \u2192 JSON', 'value': json.dumps(obj, indent=2)})
+                    except Exception:
+                        # Maybe it's another URL?
+                        if text.startswith('http://') or text.startswith('https://'):
+                            insights.append({'type': 'b64url', 'label': 'Base64 \u2192 URL', 'value': text})
+                        else:
+                            insights.append({'type': 'b64', 'label': 'Base64 Decoded', 'value': text})
+
+        # ---- Direct JSON ----
+        if not insights:
+            try:
+                obj = json.loads(working)
+                insights.append({'type': 'json', 'label': 'JSON Value', 'value': json.dumps(obj, indent=2)})
+            except Exception:
+                pass
+
+        # ---- UUID ----
+        if re.match(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', working, re.I):
+            ver = working[14]
+            ver_names = {'1':'time-based','2':'DCE security','3':'name-based MD5','4':'random','5':'name-based SHA-1','6':'reordered time','7':'Unix time-sortable'}
+            insights.append({'type': 'uuid', 'label': f'UUID v{ver} ({ver_names.get(ver, "unknown")})', 'value': working})
+
+        # ---- Hex string ----
+        if re.match(r'^[0-9a-f]+$', working, re.I) and len(working) >= 16 and len(working) % 2 == 0:
+            try:
+                decoded_hex = bytes.fromhex(working).decode('utf-8', errors='replace')
+                if _printable_ratio(bytes.fromhex(working)) > 0.80 and decoded_hex.strip():
+                    insights.append({'type': 'hex', 'label': 'Hex Decoded', 'value': decoded_hex})
+            except Exception:
+                pass
+
+        # ---- Unix timestamp ----
+        if re.match(r'^\d{10}$', working):
+            try:
+                ts = int(working)
+                dt = datetime.datetime.utcfromtimestamp(ts)
+                if 2000 <= dt.year <= 2040:
+                    insights.append({'type': 'ts', 'label': 'Unix Timestamp (seconds)', 'value': dt.strftime('%Y-%m-%d %H:%M:%S UTC')})
+            except Exception:
+                pass
+        elif re.match(r'^\d{13}$', working):
+            try:
+                ts = int(working) / 1000
+                dt = datetime.datetime.utcfromtimestamp(ts)
+                if 2000 <= dt.year <= 2040:
+                    insights.append({'type': 'ts', 'label': 'Unix Timestamp (milliseconds)', 'value': dt.strftime('%Y-%m-%d %H:%M:%S.') + f'{int(working[-3:]):03d} UTC'})
+            except Exception:
+                pass
+
+        if insights:
+            results.append({'key': key, 'value': value, 'insights': insights})
+
+    return results
+
+import json as _json
+output = _json.dumps(analyze(url_input))
+output
+`;
+
+  function _insightClass(type) {
+    if (type === 'jwt')                   return 'type-jwt';
+    if (type === 'ts')                    return 'type-ts';
+    if (type === 'uuid')                  return 'type-uuid';
+    if (type === 'warn')                  return 'type-warn';
+    return '';
+  }
+
+  function _renderInsight(ins) {
+    const cls   = _insightClass(ins.type);
+    const label = esc(ins.label);
+
+    if (ins.type === 'jwt') {
+      return `
+        <div class="advanced-insight ${cls}">
+          <div class="advanced-insight-label">${label}</div>
+          <div style="font-size:0.75rem;color:#8b949e;margin-bottom:4px;margin-top:2px;">Header</div>
+          <pre class="advanced-insight-value">${esc(ins.header)}</pre>
+          <div style="font-size:0.75rem;color:#8b949e;margin-top:8px;margin-bottom:4px;">Payload</div>
+          <pre class="advanced-insight-value">${esc(ins.payload)}</pre>
+        </div>`;
+    }
+
+    return `
+      <div class="advanced-insight ${cls}">
+        <div class="advanced-insight-label">${label}</div>
+        <pre class="advanced-insight-value">${esc(ins.value)}</pre>
+      </div>`;
+  }
+
+  function _runAdvancedAnalysis() {
+    const panel  = document.getElementById('advancedPanel');
+    const btn    = document.getElementById('advancedBtn');
+    const input  = document.getElementById('urlInput').value.trim();
+
+    const statusEl = document.getElementById('pyodideStatus');
+    if (statusEl) statusEl.textContent = 'Running Python analysis\u2026';
+
+    let results;
+    try {
+      _pyodide.globals.set('url_input', input);
+      const raw = _pyodide.runPython(PYTHON_ANALYZER);
+      results = JSON.parse(raw);
+    } catch (err) {
+      panel.innerHTML = `
+        <div class="advanced-panel">
+          <div class="advanced-panel-header">⚗️ Advanced Analysis</div>
+          <div style="color:#ffa657;font-size:0.88rem;"><strong>Python error:</strong> ${esc(String(err))}</div>
+        </div>`;
+      btn.disabled = false;
+      btn.textContent = '⚗️ Re-run Advanced Analysis';
+      return;
+    }
+
+    if (!results || results.length === 0) {
+      panel.innerHTML = `
+        <div class="advanced-panel">
+          <div class="advanced-panel-header">⚗️ Advanced Analysis &mdash; Complete</div>
+          <div class="advanced-empty">No additional insights found. The parameter values in this URL don't appear to contain hidden encoded data, JWTs, or other detectable formats.</div>
+        </div>`;
+    } else {
+      const cards = results.map(item => {
+        const insightsHtml = item.insights.map(_renderInsight).join('');
+        return `
+          <div class="advanced-param-card">
+            <div class="advanced-param-key">${esc(item.key)}</div>
+            <div class="advanced-param-raw">${esc(item.value)}</div>
+            ${insightsHtml}
+          </div>`;
+      }).join('');
+
+      panel.innerHTML = `
+        <div class="advanced-panel">
+          <div class="advanced-panel-header">
+            ⚗️ Advanced Analysis &mdash; ${results.length} parameter${results.length !== 1 ? 's' : ''} with hidden data
+          </div>
+          ${cards}
+          <div style="font-size:0.75rem;color:#8b949e;margin-top:0.5rem;text-align:center;">
+            Powered by <strong style="color:#c9d1d9;">Pyodide</strong> (Python 3.x running in WebAssembly) &mdash; all analysis happens locally in your browser.
+          </div>
+        </div>`;
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<span class="flask-icon">⚗️</span> Re-run Advanced Analysis';
+    btn.onclick = () => _runAdvancedAnalysis();
+  }
+  </script>
 
 </body>
 </html>
