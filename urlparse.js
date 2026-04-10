@@ -359,6 +359,59 @@ const SENSITIVE_PARAMS = {
   private_key:   'Private Key',
 };
 
+// ISO 3166-1 alpha-2 country codes
+const COUNTRY_CODES = {
+  'AF': 'Afghanistan', 'AL': 'Albania', 'DZ': 'Algeria', 'AD': 'Andorra',
+  'AO': 'Angola', 'AG': 'Antigua and Barbuda', 'AR': 'Argentina', 'AM': 'Armenia',
+  'AU': 'Australia', 'AT': 'Austria', 'AZ': 'Azerbaijan', 'BS': 'Bahamas',
+  'BH': 'Bahrain', 'BD': 'Bangladesh', 'BB': 'Barbados', 'BY': 'Belarus',
+  'BE': 'Belgium', 'BZ': 'Belize', 'BJ': 'Benin', 'BT': 'Bhutan',
+  'BO': 'Bolivia', 'BA': 'Bosnia and Herzegovina', 'BW': 'Botswana', 'BR': 'Brazil',
+  'BN': 'Brunei', 'BG': 'Bulgaria', 'BF': 'Burkina Faso', 'BI': 'Burundi',
+  'CV': 'Cape Verde', 'KH': 'Cambodia', 'CM': 'Cameroon', 'CA': 'Canada',
+  'CF': 'Central African Republic', 'TD': 'Chad', 'CL': 'Chile', 'CN': 'China',
+  'CO': 'Colombia', 'KM': 'Comoros', 'CG': 'Congo', 'CD': 'DR Congo',
+  'CR': 'Costa Rica', 'CI': 'Ivory Coast', 'HR': 'Croatia', 'CU': 'Cuba',
+  'CY': 'Cyprus', 'CZ': 'Czech Republic', 'DK': 'Denmark', 'DJ': 'Djibouti',
+  'DM': 'Dominica', 'DO': 'Dominican Republic', 'EC': 'Ecuador', 'EG': 'Egypt',
+  'SV': 'El Salvador', 'GQ': 'Equatorial Guinea', 'ER': 'Eritrea', 'EE': 'Estonia',
+  'SZ': 'Eswatini', 'ET': 'Ethiopia', 'FJ': 'Fiji', 'FI': 'Finland',
+  'FR': 'France', 'GA': 'Gabon', 'GM': 'Gambia', 'GE': 'Georgia',
+  'DE': 'Germany', 'GH': 'Ghana', 'GR': 'Greece', 'GD': 'Grenada',
+  'GT': 'Guatemala', 'GN': 'Guinea', 'GW': 'Guinea-Bissau', 'GY': 'Guyana',
+  'HT': 'Haiti', 'HN': 'Honduras', 'HU': 'Hungary', 'IS': 'Iceland',
+  'IN': 'India', 'ID': 'Indonesia', 'IR': 'Iran', 'IQ': 'Iraq',
+  'IE': 'Ireland', 'IL': 'Israel', 'IT': 'Italy', 'JM': 'Jamaica',
+  'JP': 'Japan', 'JO': 'Jordan', 'KZ': 'Kazakhstan', 'KE': 'Kenya',
+  'KI': 'Kiribati', 'KP': 'North Korea', 'KR': 'South Korea', 'KW': 'Kuwait',
+  'KG': 'Kyrgyzstan', 'LA': 'Laos', 'LV': 'Latvia', 'LB': 'Lebanon',
+  'LS': 'Lesotho', 'LR': 'Liberia', 'LY': 'Libya', 'LI': 'Liechtenstein',
+  'LT': 'Lithuania', 'LU': 'Luxembourg', 'MG': 'Madagascar', 'MW': 'Malawi',
+  'MY': 'Malaysia', 'MV': 'Maldives', 'ML': 'Mali', 'MT': 'Malta',
+  'MH': 'Marshall Islands', 'MR': 'Mauritania', 'MU': 'Mauritius', 'MX': 'Mexico',
+  'FM': 'Micronesia', 'MD': 'Moldova', 'MC': 'Monaco', 'MN': 'Mongolia',
+  'ME': 'Montenegro', 'MA': 'Morocco', 'MZ': 'Mozambique', 'MM': 'Myanmar',
+  'NA': 'Namibia', 'NR': 'Nauru', 'NP': 'Nepal', 'NL': 'Netherlands',
+  'NZ': 'New Zealand', 'NI': 'Nicaragua', 'NE': 'Niger', 'NG': 'Nigeria',
+  'MK': 'North Macedonia', 'NO': 'Norway', 'OM': 'Oman', 'PK': 'Pakistan',
+  'PW': 'Palau', 'PA': 'Panama', 'PG': 'Papua New Guinea', 'PY': 'Paraguay',
+  'PE': 'Peru', 'PH': 'Philippines', 'PL': 'Poland', 'PT': 'Portugal',
+  'QA': 'Qatar', 'RO': 'Romania', 'RU': 'Russia', 'RW': 'Rwanda',
+  'KN': 'Saint Kitts and Nevis', 'LC': 'Saint Lucia', 'VC': 'Saint Vincent and the Grenadines',
+  'WS': 'Samoa', 'SM': 'San Marino', 'ST': 'Sao Tome and Principe', 'SA': 'Saudi Arabia',
+  'SN': 'Senegal', 'RS': 'Serbia', 'SC': 'Seychelles', 'SL': 'Sierra Leone',
+  'SG': 'Singapore', 'SK': 'Slovakia', 'SI': 'Slovenia', 'SB': 'Solomon Islands',
+  'SO': 'Somalia', 'ZA': 'South Africa', 'SS': 'South Sudan', 'ES': 'Spain',
+  'LK': 'Sri Lanka', 'SD': 'Sudan', 'SR': 'Suriname', 'SE': 'Sweden',
+  'CH': 'Switzerland', 'SY': 'Syria', 'TW': 'Taiwan', 'TJ': 'Tajikistan',
+  'TZ': 'Tanzania', 'TH': 'Thailand', 'TL': 'Timor-Leste', 'TG': 'Togo',
+  'TO': 'Tonga', 'TT': 'Trinidad and Tobago', 'TN': 'Tunisia', 'TR': 'Turkey',
+  'TM': 'Turkmenistan', 'TV': 'Tuvalu', 'UG': 'Uganda', 'UA': 'Ukraine',
+  'AE': 'United Arab Emirates', 'GB': 'United Kingdom', 'US': 'United States',
+  'UY': 'Uruguay', 'UZ': 'Uzbekistan', 'VU': 'Vanuatu', 'VE': 'Venezuela',
+  'VN': 'Vietnam', 'YE': 'Yemen', 'ZM': 'Zambia', 'ZW': 'Zimbabwe',
+};
+
 const TWITTER_SHARE_METHODS = {
   '11': 'Twitter for iPhone',
   '12': 'Twitter for Android',
@@ -441,6 +494,42 @@ function decodeSnowflake(id, epoch) {
   } catch (e) { return null; }
 }
 
+// Discord snowflakes: 17-19 digit all-numeric strings; epoch = Jan 1 2015 UTC
+const DISCORD_EPOCH = 1420070400000n;
+function tryDiscordSnowflake(value) {
+  if (!/^\d{17,19}$/.test(value)) return null;
+  try {
+    const date = new Date(Number((BigInt(value) >> 22n) + DISCORD_EPOCH));
+    if (date.getFullYear() >= 2015 && date.getFullYear() <= 2100) return date;
+  } catch (e) {}
+  return null;
+}
+
+// Telegram invite hashes: base64URL-decode → first 4 bytes little-endian uint32 = creator ID
+function decodeTelegramHash(hash) {
+  try {
+    const b64 = hash.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = b64 + '==='.slice(0, (4 - b64.length % 4) % 4);
+    const binary = atob(padded);
+    if (binary.length < 4) return null;
+    const view = new DataView(new ArrayBuffer(4));
+    for (let i = 0; i < 4; i++) view.setUint8(i, binary.charCodeAt(i));
+    return view.getUint32(0, true); // little-endian
+  } catch (e) { return null; }
+}
+
+// Microsoft SharePoint/OneDrive: reconstruct email from underscore-encoded path segment
+// e.g. "john_doe_contoso_com" → "john.doe@contoso.com"
+function reconstructSharePointEmail(encoded) {
+  const parts = encoded.split('_').filter(Boolean);
+  if (parts.length < 3) return null;
+  const tld    = parts[parts.length - 1];
+  const domain = parts[parts.length - 2];
+  const user   = parts.slice(0, -2).join('.');
+  if (!tld || !domain || !user) return null;
+  return `${user}@${domain}.${tld}`;
+}
+
 function fmtDate(date) {
   return date.toUTCString().replace(' GMT', ' UTC');
 }
@@ -475,6 +564,15 @@ const PLATFORM_PATTERNS = {
   duckduckgo: /(?:^|\.)duckduckgo\.com$/,
   reddit:     /(?:^|\.)reddit\.com$/,
   tiktok:     /(?:^|\.)tiktok\.com$/,
+  discord:    /(?:^|\.)discord\.(com|gg)$/,
+  telegram:   /^t\.me$/,
+  chatgpt:    /(?:^|\.)chatgpt\.com$/,
+  claudeai:   /(?:^|\.)claude\.ai$/,
+  perplexity: /(?:^|\.)perplexity\.ai$/,
+  substack:   /(?:^|\.)substack\.com$/,
+  suno:       /(?:^|\.)suno\.com$/,
+  pinterest:  /(?:^|\.)(?:pinterest\.com|pin\.it)$/,
+  microsoft:  /(?:^|\.)(?:sharepoint|onedrive)\.com$/,
 };
 
 function detectPlatform(hostname) {
@@ -543,6 +641,123 @@ function parseURL(rawUrl) {
         explanation: `The unique ID for this post: <strong>${esc(tid)}</strong>. Twitter/X uses <em>Snowflake IDs</em> — a format where the ID itself encodes the creation timestamp.${tdate ? ` This post was created: <strong>${fmtDate(tdate)}</strong>.` : ''}`,
         badge: null,
       });
+
+    } else if (platform === 'discord') {
+      if (parts[0] === 'channels' && parts.length >= 3) {
+        // Direct channel/message link: /channels/{guild_id}/{channel_id}/{message_id?}
+        const labels = ['Guild (Server)', 'Channel', 'Message'];
+        for (let i = 1; i < Math.min(parts.length, 4); i++) {
+          const sf = tryDiscordSnowflake(parts[i]);
+          const lbl = labels[i - 1] || `Segment ${i}`;
+          segments.push({
+            id: `path-discord-${i}`, category: 'Path', label: `Discord ${lbl} ID`,
+            rawValue: '/' + parts[i], colorHex: HOST_COLORS.path,
+            explanation: `Discord ${lbl} ID: <strong>${esc(parts[i])}</strong>. Discord uses Snowflake IDs — the ID itself encodes the creation timestamp.${sf ? ` This ${lbl.toLowerCase()} was created: <strong>${fmtDate(sf)}</strong>.` : ''}`,
+            badge: null,
+          });
+        }
+      } else if ((parts[0] === 'invite' || url.hostname.endsWith('.gg')) && parts.length >= 1) {
+        const code = parts[0] === 'invite' ? parts[1] : parts[0];
+        if (code) segments.push({ id: 'path-discord-invite', category: 'Path', label: 'Discord Server Invite Code', rawValue: '/' + code, colorHex: HOST_COLORS.path, explanation: `An invite code granting access to a Discord server: <strong>${esc(code)}</strong>. Anyone with this code can join the server (if the invite hasn't expired or been revoked).`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'telegram') {
+      const raw = url.pathname.replace(/^\//, '');
+      if (parts[0] === 'joinchat' && parts[1]) {
+        const creatorId = decodeTelegramHash(parts[1]);
+        segments.push({ id: 'path-tg-type', category: 'Path', label: 'Telegram Invite Type', rawValue: '/joinchat', colorHex: HOST_COLORS.path, explanation: 'This is a private Telegram <strong>group or channel invite link</strong>. Only people with this link can request to join.', badge: null });
+        segments.push({ id: 'path-tg-hash', category: 'Path', label: 'Telegram Invite Hash', rawValue: '/' + parts[1], colorHex: HOST_COLORS.path, explanation: `The invite hash: <strong>${esc(parts[1])}</strong>.${creatorId !== null ? ` Decoding the hash reveals the chat creator\'s Telegram user ID: <strong>${creatorId}</strong>.` : ''}`, badge: null });
+      } else if (raw.startsWith('+') && raw.length > 1) {
+        const hash = raw.slice(1);
+        const creatorId = decodeTelegramHash(hash);
+        segments.push({ id: 'path-tg-invite', category: 'Path', label: 'Telegram Invite Link', rawValue: '/' + raw, colorHex: HOST_COLORS.path, explanation: `A modern Telegram private invite link. Hash: <strong>${esc(hash)}</strong>.${creatorId !== null ? ` Decoded creator ID: <strong>${creatorId}</strong>.` : ''}`, badge: null });
+      } else if (parts.length === 1) {
+        segments.push({ id: 'path-tg-user', category: 'Path', label: 'Telegram Username / Channel', rawValue: '/' + parts[0], colorHex: HOST_COLORS.path, explanation: `The public Telegram username or channel handle: <strong>@${esc(parts[0])}</strong>. This is a publicly accessible profile or channel.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'microsoft') {
+      // SharePoint/OneDrive: /:a:/g/personal/{encoded_email}/...
+      const personalIdx = parts.indexOf('personal');
+      if (personalIdx !== -1 && parts[personalIdx + 1]) {
+        const encoded = parts[personalIdx + 1];
+        const email = reconstructSharePointEmail(encoded);
+        for (let i = 0; i <= personalIdx; i++) {
+          segments.push({ id: `path-ms-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + parts[i], colorHex: HOST_COLORS.path, explanation: `SharePoint path: <strong>/${esc(parts[i])}</strong>`, badge: null });
+        }
+        segments.push({
+          id: 'path-ms-email', category: 'Path', label: 'Shared By (Email Address)',
+          rawValue: '/' + encoded, colorHex: HOST_COLORS.path,
+          explanation: email
+            ? `This path segment encodes the email address of the person who shared this file. Reconstructed: <strong>${esc(email)}</strong>`
+            : `Encoded user identifier: <strong>${esc(encoded)}</strong>. Could not reconstruct a clean email address from this segment.`,
+          badge: email ? { text: 'PII', cls: 'badge-active' } : null,
+        });
+        for (let i = personalIdx + 2; i < parts.length; i++) {
+          segments.push({ id: `path-ms-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + parts[i], colorHex: HOST_COLORS.path, explanation: `SharePoint path: <strong>/${esc(parts[i])}</strong>`, badge: null });
+        }
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'chatgpt' || platform === 'claudeai') {
+      const platformName = platform === 'chatgpt' ? 'ChatGPT' : 'Claude';
+      if (parts[0] === 'share' && parts[1]) {
+        segments.push({ id: 'path-share-type', category: 'Path', label: 'Content Type', rawValue: '/share', colorHex: HOST_COLORS.path, explanation: `This is a <strong>${platformName} shared conversation link</strong>. Anyone with this link can read the conversation.`, badge: null });
+        segments.push({ id: 'path-share-id', category: 'Path', label: 'Shared Conversation ID', rawValue: '/' + parts[1], colorHex: HOST_COLORS.path, explanation: `A unique identifier for this shared conversation: <strong>${esc(parts[1])}</strong>. This is a UUID (Universally Unique Identifier) — a randomly generated ID that points to a specific conversation snapshot stored by ${platformName}.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'perplexity') {
+      if (parts[0] === 'search' && parts[1]) {
+        segments.push({ id: 'path-px-type', category: 'Path', label: 'Content Type', rawValue: '/search', colorHex: HOST_COLORS.path, explanation: 'This is a <strong>Perplexity AI shared search thread</strong>.', badge: null });
+        segments.push({ id: 'path-px-slug', category: 'Path', label: 'Thread Slug', rawValue: '/' + parts[1], colorHex: HOST_COLORS.path, explanation: `A unique identifier for this Perplexity search thread: <strong>${esc(parts[1])}</strong>. The slug is used to look up and display the shared Q&A thread.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'substack') {
+      if (parts[0] && parts[0].startsWith('@')) {
+        const handle = parts[0].slice(1);
+        segments.push({ id: 'path-ss-handle', category: 'Path', label: 'Substack Author Handle', rawValue: '/' + parts[0], colorHex: HOST_COLORS.path, explanation: `The Substack author's handle: <strong>@${esc(handle)}</strong>.`, badge: null });
+        if (parts[1] === 'note' && parts[2]) {
+          segments.push({ id: 'path-ss-type', category: 'Path', label: 'Content Type', rawValue: '/note', colorHex: HOST_COLORS.path, explanation: 'This link points to a specific <strong>Substack Note</strong> (short-form post).', badge: null });
+          segments.push({ id: 'path-ss-id', category: 'Path', label: 'Note ID', rawValue: '/' + parts[2], colorHex: HOST_COLORS.path, explanation: `Unique identifier for this Note: <strong>${esc(parts[2])}</strong>.`, badge: null });
+        } else if (parts[1] === 'p' && parts[2]) {
+          segments.push({ id: 'path-ss-type', category: 'Path', label: 'Content Type', rawValue: '/p', colorHex: HOST_COLORS.path, explanation: 'This link points to a specific <strong>Substack post</strong>.', badge: null });
+          segments.push({ id: 'path-ss-slug', category: 'Path', label: 'Post Slug', rawValue: '/' + parts[2], colorHex: HOST_COLORS.path, explanation: `The URL-friendly title of this post: <strong>${esc(parts[2])}</strong>.`, badge: null });
+        }
+      } else if (parts[0] === 'p' && parts[1]) {
+        segments.push({ id: 'path-ss-post', category: 'Path', label: 'Substack Post', rawValue: url.pathname, colorHex: HOST_COLORS.path, explanation: `A Substack post with the slug: <strong>${esc(parts[1])}</strong>.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'suno') {
+      if (parts[0] === 's' && parts[1]) {
+        segments.push({ id: 'path-suno-type', category: 'Path', label: 'Content Type', rawValue: '/s', colorHex: HOST_COLORS.path, explanation: 'This is a <strong>Suno AI shared audio link</strong>.', badge: null });
+        segments.push({ id: 'path-suno-code', category: 'Path', label: 'Share Code', rawValue: '/' + parts[1], colorHex: HOST_COLORS.path, explanation: `Unique share code for this Suno audio clip: <strong>${esc(parts[1])}</strong>. Suno uses short alphanumeric codes to identify shared AI-generated songs.`, badge: null });
+      } else if (parts[0] === 'song' && parts[1]) {
+        segments.push({ id: 'path-suno-song', category: 'Path', label: 'Suno Song ID', rawValue: url.pathname, colorHex: HOST_COLORS.path, explanation: `A direct link to Suno song ID: <strong>${esc(parts[1])}</strong>.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
+    } else if (platform === 'pinterest') {
+      if (parts[0] === 'pin' && parts[1]) {
+        segments.push({ id: 'path-pin-type', category: 'Path', label: 'Content Type', rawValue: '/pin', colorHex: HOST_COLORS.path, explanation: 'This is a direct link to a specific <strong>Pinterest Pin</strong>.', badge: null });
+        const sf = tryDiscordSnowflake(parts[1]); // Pinterest also uses snowflake-like numeric IDs
+        segments.push({ id: 'path-pin-id', category: 'Path', label: 'Pin ID', rawValue: '/' + parts[1], colorHex: HOST_COLORS.path, explanation: `The unique ID for this Pin: <strong>${esc(parts[1])}</strong>.${sf ? ` Pinterest IDs are Snowflake-based and encode the creation date: <strong>${fmtDate(sf)}</strong>.` : ''}`, badge: null });
+      } else if (parts.length === 1 && url.hostname === 'pin.it') {
+        segments.push({ id: 'path-pinit', category: 'Path', label: 'Pinterest Short Link Code', rawValue: '/' + parts[0], colorHex: HOST_COLORS.path, explanation: `A <strong>pin.it short link</strong> code: <strong>${esc(parts[0])}</strong>. This is a shortened URL that redirects to a full Pinterest Pin page.`, badge: null });
+      } else {
+        parts.forEach((p, i) => segments.push({ id: `path-${i}`, category: 'Path', label: `Path Segment ${i + 1}`, rawValue: '/' + p, colorHex: HOST_COLORS.path, explanation: `Segment ${i + 1}: <strong>/${esc(p)}</strong>`, badge: null }));
+      }
+
     } else if (parts.length === 1) {
       const dec = isUrlEncoded(parts[0]) ? decode(parts[0]) : null;
       const ts  = tryUnixTimestamp(parts[0]);
@@ -768,6 +983,15 @@ const PLATFORM_META = {
   duckduckgo: { label: 'DuckDuckGo',  color: '#de5833' },
   reddit:     { label: 'Reddit',      color: '#ff4500' },
   tiktok:     { label: 'TikTok',      color: '#010101' },
+  discord:    { label: 'Discord',     color: '#5865f2' },
+  telegram:   { label: 'Telegram',    color: '#0088cc' },
+  chatgpt:    { label: 'ChatGPT',     color: '#10a37f' },
+  claudeai:   { label: 'Claude',      color: '#d4890a' },
+  perplexity: { label: 'Perplexity',  color: '#1fb8cd' },
+  substack:   { label: 'Substack',    color: '#ff6719' },
+  suno:       { label: 'Suno',        color: '#4d1a7f' },
+  pinterest:  { label: 'Pinterest',   color: '#e60023' },
+  microsoft:  { label: 'Microsoft',   color: '#00a4ef' },
 };
 
 // ============================================================
