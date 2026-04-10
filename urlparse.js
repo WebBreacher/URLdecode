@@ -948,12 +948,36 @@ const EXAMPLES = [
     color: '#1877f2',
     url:   'https://www.example.com/news/article?fbclid=IwAR3xK9abc123&utm_source=facebook&utm_medium=social',
   },
+  {
+    title: '💬 Discord Message Link',
+    desc:  'Decode Snowflake IDs to reveal when a server, channel, and message were created',
+    color: '#5865f2',
+    url:   'https://discord.com/channels/81384788765712384/381887113391505410/817253150243790849',
+  },
+  {
+    title: '📁 SharePoint File Share',
+    desc:  'Reconstruct the email address of the person who shared this file',
+    color: '#00a4ef',
+    url:   'https://contoso.sharepoint.com/:w:/g/personal/jane_doe_contoso_com/EaBcDeFgHiJkLmNoPqRsTuVwABCDEFGHIJ',
+  },
+  {
+    title: '✈️ Telegram Invite Link',
+    desc:  'Decode the invite hash to extract the chat creator\'s Telegram user ID',
+    color: '#0088cc',
+    url:   'https://t.me/joinchat/AAAAAFMkmMGcXUMbMLflag',
+  },
+  {
+    title: '🤖 Claude Shared Conversation',
+    desc:  'See how Claude.ai share links are structured',
+    color: '#d4890a',
+    url:   'https://claude.ai/share/a1b2c3d4-5678-4abc-bdef-123456789012',
+  },
 ];
 
 function loadExamples() {
   document.getElementById('exampleCards').innerHTML = EXAMPLES.map(ex => `
     <div class="col-sm-6 col-lg-3">
-      <div class="example-card card h-100 p-3" onclick="useExample(${JSON.stringify(ex.url)})" style="border-top:4px solid ${ex.color};cursor:pointer;">
+      <div class="example-card card h-100 p-3" onclick='useExample(${JSON.stringify(ex.url)})' style="border-top:4px solid ${ex.color};cursor:pointer;">
         <div style="font-size:1rem;font-weight:700;margin-bottom:6px;">${ex.title}</div>
         <div style="font-size:0.82rem;color:#555;margin-bottom:10px;">${ex.desc}</div>
         <div class="example-url">${esc(ex.url)}</div>
